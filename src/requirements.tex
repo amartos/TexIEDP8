@@ -1,0 +1,45 @@
+\usepackage{polyglossia} % language with xelatex
+    \setmainlanguage{french}
+
+\usepackage{fontspec} % define font
+    \setmainfont{Times New Roman}
+
+\usepackage[french]{varioref} % smart references
+\usepackage{pdflscape} % landscape (used in screenshots)
+\usepackage{caption} % add caption for non floats figures
+\usepackage{titlesec} % title formattings
+\usepackage{ifthen}
+
+\usepackage[
+    backend=biber,
+    hyperref=true,
+    style=authoryear,
+    dashed=true,
+]{biblatex} % bibliography package
+
+% used to patch bibliography
+\usepackage{xpatch,filecontents}
+
+\usepackage[most]{tcolorbox} % colored boxes and environments
+\usepackage{xcolor} % colors
+\usepackage{listings} % code blocks
+
+\usepackage[
+    verbose,
+    a4paper,
+    tmargin=2.5cm,
+    bmargin=2.5cm,
+    lmargin=2.5cm,
+    rmargin=2.5cm
+]{geometry} % page format
+
+\usepackage[
+    pdflang={french},
+    colorlinks=false,
+    pdfborder={0 0 0},% no border for links
+    pdffitwindow=true,
+    unicode=true,
+    breaklinks=false,
+    bookmarksopen=true,
+]{hyperref} % hyperlinks
+\usepackage[numbered]{bookmark} % pdf's bookmarks

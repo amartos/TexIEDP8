@@ -1,0 +1,20 @@
+\title{Matière du devoir} % Matière
+
+\newcommand{\name}{John Doe} % Prénom Nom
+\newcommand{\studentid}{123456789} % n° étudiant
+\newcommand{\subtitle}{Titre du devoir} % Titre du devoir
+
+% la commande section donne maintenant: 
+% \section{À rendre} => Exercice 1.2 À rendre
+% à commenter pour remettre les titres de sections habituels
+\titleformat{\section}{\bfseries \large}{Exercice \thesection}{1em}{}
+
+% Définition du style principal des codes sources
+% styles définis dans src/codeblocks.tex
+\lstdefinestyle{CodeBox}{
+    style=tab4, % la largeur de tabulation vaut 4 espaces
+    style=linesnb5, % numéro de lignes, toutes les 5 lignes
+    style=box, % enferme les codes sources dans des boites colorées
+    style=fnttstyle, % police type typewriter
+    style=syntaxcol, % coloration syntaxique
+}

@@ -1,0 +1,118 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Syntax colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\colorlet{lightgrey}{black!5}
+
+% Parrots colors
+% see https://www.pinterest.fr/pin/534943261958609466/
+\definecolor{pteal}{HTML}{1B2D51} % too close to black
+\definecolor{pdarkblue}{HTML}{124F8E} % too close to black
+\definecolor{pblue}{HTML}{0680CB}
+\definecolor{pgreen}{HTML}{639236}
+\definecolor{pyellow}{HTML}{F6A609}
+\definecolor{pred}{HTML}{F32E25}
+
+% Syntax coloration
+\colorlet{background}{lightgrey}
+\colorlet{comment}{gray}
+\colorlet{string}{pgreen}
+\colorlet{keyword1}{pred}
+\colorlet{keyword2}{pblue}
+\colorlet{keyword3}{pyellow}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Listings
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% do not put curly double quotes. hack, but no choice.
+% see https://tex.stackexchange.com/a/566480
+\makeatletter
+    \lst@CCPutMacro \lst@ProcessOther {"22}{\lst@ifupquote \textquotedbl % chktex 1
+                                                 \else \char34\relax \fi}
+    \@empty\z@\@empty% chktex 1
+\makeatother
+
+% Default options
+\lstset{
+    % showspaces=true, % debug purposes
+    sensitive=true,
+    showstringspaces=false,
+    columns=fullflexible, % no additional spaces due to font
+    upquote=true,
+    keepspaces=true,
+    breaklines=true,
+    breakatwhitespace=true,
+    belowskip=0.5cm,
+    extendedchars=true,
+    % unicode characters not properly handled. See
+    % https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings#Encoding_issue
+    literate= % ONLY ONE COMA FOR ALL
+      {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1 % chktex 7
+      {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+      {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1 % chktex 7
+      {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+      {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1 % chktex 7
+      {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+      {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1 % chktex 7
+      {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+      {Ã}{{\~A}}1 {ã}{{\~a}}1 {Õ}{{\~O}}1 {õ}{{\~o}}1
+      {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+      {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+      {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+      {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+      {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1,
+      % {-}{-}1, % css needs dashes
+      % adding the star mess up syntax color in c source files
+      % {*}{*}1,
+}
+
+% Font style
+\lstdefinestyle{sfstyle}{basicstyle=\sffamily}
+\lstdefinestyle{ttstyle}{basicstyle=\ttfamily}
+\lstdefinestyle{fnsfstyle}{basicstyle=\footnotesize\sffamily}
+\lstdefinestyle{fnttstyle}{basicstyle=\footnotesize\ttfamily}
+
+% syntax coloration
+\lstdefinestyle{nosyntaxcol}{keywordstyle=\normalsize} % disable
+\lstdefinestyle{syntaxcol}{ % enable
+    keywordstyle=\color{keyword1},
+    keywordstyle=[2]\color{keyword2},
+    keywordstyle=[3]\color{keyword3},
+    stringstyle=\color{string},
+    commentstyle=\color{comment},
+}
+
+% indentation
+\lstdefinestyle{tab2}{tabsize=2} % 2 spaces
+\lstdefinestyle{tab4}{tabsize=4} % 4 spaces
+\lstdefinestyle{tab8}{tabsize=8} % 8 spaces
+
+% line numbers
+\lstdefinestyle{linesnbdefault}{
+    numbers=left,
+    numbersep=10pt, % distance from code
+    firstnumber=1,
+    numberfirstline=true,
+    numberstyle=\tiny\ttfamily,
+}
+
+\lstdefinestyle{linesnb1}{
+    style=linesnbdefault,
+    stepnumber=1 % every 1 line
+}
+
+\lstdefinestyle{linesnb5}{
+    style=linesnbdefault,
+    stepnumber=5 % every 5 lines
+}
+
+% margin from text
+\lstdefinestyle{leftmargin}{xleftmargin=17pt}
+
+% code box
+\lstdefinestyle{box}{
+    backgroundcolor=\color{background},
+    rulecolor=\color{gray},
+    frame=trBL,
+}

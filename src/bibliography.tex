@@ -1,0 +1,16 @@
+\addbibresource{biblio.bib} % main bib file
+
+% change title in italics for title in quotes
+% https://tex.stackexchange.com/a/153604
+\DeclareFieldFormat[
+    article, online, inreference,
+]{title}{\mkbibquote{#1}}
+
+% remove parentheses around date
+% https://tex.stackexchange.com/a/428193
+\xpatchbibmacro{date+extradate}{%
+  \printtext[parens]%
+}{%
+  \setunit*{\addcomma\space}%
+  \printtext%
+}{}{}

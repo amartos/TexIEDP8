@@ -1,0 +1,154 @@
+%! @brief sourcecodeinline - add source code file from the code/ folder as paragraph
+%! @param 1 : additional listings options, eg. caption="title"
+%! @param 2 : file path
+%! @example :
+%   \sourcecodeinline{language=python,caption=script.py}{path/to/file/script.py}
+\newcommand{\sourcecodeinline}[2]{
+    \lstinputlisting[#1]{code/#2}
+}
+
+%! @brief sourcecode - add source code file from the code/ folder in text and toc
+%! @param 1 : additional listings options, eg. caption="title"
+%! @param 2 : file path
+%! @param 3 : label for reference
+%! @example :
+%   \sourcecode{language=python,caption=source.c}{path/to/file/source.c}{sourcec}
+\newcommand{\sourcecode}[3]{
+    \phantomsection{}
+    \captionof{figure}{Code source - #2}\label{#3}
+    \sourcecodeinline{#1}{#2}
+}
+
+%! @brief simplefig - add figure in text
+%! param 1 : caption
+%! param 2 : content
+%! param 3 : label
+%! @example :
+%   \simplefig{Legend of figure}{
+%       \includegraphics[scale=0.5]{path/to/image/image.png}
+%       }{fig:myimage}
+\newcommand{\simplefig}[3]{
+    \begin{figure}
+        \caption{#1}\label{#3}
+        \vspace{0.5cm}
+        #2
+    \end{figure}
+}
+
+%! @brief image - add image from the "images" folder in document and toc
+%! @note : do not uses the figure env. as floats cannot be put in minipages.
+%!      If you use the graybox environment, you should use this command to put
+%!      figures and not the "figure" environment.
+%! @param 1 : caption, used in toc
+%! @param 2 : scale
+%! @param 3 : image file path within the images/ folder
+%! @param 4 : label
+%! @example :
+%   \image{Legend of image}{0.5}{image.png}{fig:myimage}
+\newcommand{\image}[4]{
+    \phantomsection{}
+    \begin{center}
+        \captionof{figure}{#1}\label{#4}
+        \vspace{0.5cm}
+        \includegraphics[scale=#2]{images/#3}
+    \end{center}
+}
+
+%! @brief screenshot - add screenshots from the images folder in document and toc
+%! @details : This command will add the capture in its own page in landscape for
+%!     at for better readability.
+%! @warning : Do NOT use in minipages, including the graybox environment ! 
+%! @param 1 : caption, used in toc
+%! @param 2 : scale (default 0.57)
+%! @param 3 : image file name in the captures folder
+%! @param 4 : label
+%! @example :
+%   \screenshot{Legend of screenshot}{}{screenshot.png}{fig:myscreenshot}
+%   \screenshot{Legend of screenshot}{0.8}{screenshot.png}{fig:myscreenshot}
+\newcommand{\screenshot}[4]{
+    \begin{landscape}
+        \begin{figure}
+            \caption{Capture d'écran - #1}\label{#4}
+            \vspace{0.5cm}
+            \ifthenelse{\equal{#2}{}}{
+                \includegraphics[scale=0.57]{images/#3}
+            }{
+                \includegraphics[scale=#2]{images/#3}
+            }
+        \end{figure}
+    \end{landscape}
+}
+
+%! @brief screenshotsm - add smartphone screenshots in document and toc
+%! @details : This command will add up to two capture side by side in the
+%!     document. This is done for portait captures.
+%! @warning : Do NOT use in minipages, including the graybox environment ! 
+%! @param 1 : caption, used in toc
+%! @param 2 : scale (default to 0.2)
+%! @param 3 : image file name in the captures folder
+%! @param 4 : (optional) image file name in the captures folder
+%! @param 5 : label for both
+%! @example :
+%   \screenshotsm{Legend of screenshot}{}{screenshot1.png}{}{fig:myscreenshot}
+%   \screenshotsm{Legend of screenshot}{0.8}{screenshot1.png}{screenshot2.png}{fig:myscreenshots}
+\newcommand{\screenshotsm}[5]{
+    \begin{figure}
+        \caption{Capture d'écran - #1}\label{#5}
+        \vspace{0.5cm}
+        \ifthenelse{\equal{#2}{}}{
+            \includegraphics[scale=0.2]{images/#3}
+        }{
+            \includegraphics[scale=#2]{images/#3}
+        }
+        \ifthenelse{\equal{#4}{}}{
+        }{
+            \ifthenelse{\equal{#2}{}}{
+                \includegraphics[scale=0.2]{images/#4}
+            }{
+                \includegraphics[scale=#2]{images/#4}
+            }
+        }
+    \end{figure}
+}
+
+%! @brief starchapter - add starred chapter in both text and toc
+%! @param 1 : the chapter name
+%! @example :
+%   \starchapter{My chapter name}
+\newcommand{\starchapter}[1]{
+    \phantomsection{}
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{#1}
+}
+
+%! @brief starsection - add starred section in both text and toc
+%! @param 1 : the section name
+%! @example :
+%   \starsection{My section name}
+\newcommand{\starsection}[1]{
+    \phantomsection{}
+    \section*{#1}
+    \addcontentsline{toc}{section}{#1}
+}
+
+%! @brief starsubsection - add starred subsection in both text and toc
+%! @param 1 : the subsection name
+%! @example :
+%   \starsubsection{My subsection name}
+\newcommand{\starsubsection}[1]{
+    \phantomsection{}
+    \subsection*{#1}
+    \addcontentsline{toc}{subsection}{#1}
+}
+
+%! @brief addbookmark - add a bookmark
+%! @source : https://tex.stackexchange.com/a/434026
+%! @param 1 : type (toc, titlepage, etc)
+%! @param 2 : level (chapter, section, etc)
+%! @param 3 : text to appear
+%! @example :
+%   \addbookmark{toc}{section}{My section name}
+\newcommand{\addbookmark}[3]{
+    \hypertarget{#1}{}
+    \bookmark[dest=#1, level=#2]{#3}
+}

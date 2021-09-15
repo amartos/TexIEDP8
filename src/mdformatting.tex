@@ -1,0 +1,12 @@
+\author{\name{} (n° étudiant: \studentid{})}
+
+\makeatletter
+    \AtBeginDocument{
+        \hypersetup{
+            pdftitle = {\@title},
+            pdfauthor = {\@author}
+        }
+    }
+\makeatother
+
+\lstset{style=CodeBox}
