@@ -1,4 +1,4 @@
-# TeXIEDP8
+# TexIEDP8
 
 Ce projet est un modèle de document LaTeX utilisable pour les devoirs de
 l'IED de l'Université Paris 8.
@@ -31,7 +31,7 @@ Pour commencer un devoir, clonez le projet (changez `devoir` dans le nom qui
 vous conviendra):
 
 ```
-git clone https://github.com/amartos/TeXIEDP8 devoir
+git clone https://github.com/amartos/TexIEDP8 devoir
 ```
 
 Vous pouvez directement tester la mise en forme en utilisant la commande `make
@@ -118,7 +118,7 @@ xelatex -output-directory=build --jobname="main" main.tex
 % param 2 : chemin du fichier source
 % param 3 : un label pour les réferences
 % exemple :
-\sourcecode{language=python,caption=source.c}{source.c}{sourcec}
+\sourcecode{language=c,caption=source.c}{source.c}{sourcec}
 
 % simplefig - ajoute une figure
 % param 1 : légende
