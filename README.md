@@ -14,6 +14,11 @@ dossier racine du projet n'est qu'un lien symbolique vers ce fichier.
 
 ## Prérequis
 
+Le projet nécessite évidemment les utilitaires `git` et `make`. Veillez à ce
+qu'ils soient installés sur vos systèmes. La police `Liberation Serif` est
+définie par défaut, et devrait être installée par défaut sur votre système;
+vous pouvez la modifier dans le fichier `src/requirements.tex`.
+
 Les packages prérequis et leurs options sont listés dans le fichier
 `src/requirements.tex`. Le moteur utilisé est xelatex, et biber pour la
 bibliographie.
@@ -22,7 +27,7 @@ Pour une installation simple des prérequis, sur une distribution GNU/Linux bas�
 Debian (comme Ubuntu), installez les packages `texlive-full` et `biber`:
 
 ```
-sudo apt install texlive-full biber
+sudo apt install git make texlive-full biber
 ```
 
 ## Installation
