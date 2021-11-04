@@ -43,6 +43,16 @@ Vous pouvez directement tester la mise en forme en utilisant la commande `make
 full`, qui générera le pdf dans le dossier `build` (un lien symbolique vers
 `main.pdf` est dans le dossier racine du projet).
 
+Vous pouvez finalement retirer l'adresse du dépôt distant si vous pensez cela
+nécessaire - cela empêchera de le mettre à jour (à moins de redéfinir
+l'adresse):
+
+```
+cd devoir
+git remote rm origin
+# make remove-remote # à décommenter ; alternative à la commande précédente
+```
+
 ## Utilisation
 
 ### Les métadonnées

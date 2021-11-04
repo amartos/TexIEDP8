@@ -46,3 +46,7 @@ pdf:
 .Phony: clean
 clean:
 	@rm -rf $(WORKDIR)
+
+.Phony: remove-remote
+remove-remote:
+	@git remote rm origin
