@@ -122,6 +122,11 @@ xelatex -output-directory=build --jobname="main" main.tex
 ## Documentation des commandes
 
 ```latex
+% code - formatte le texte donné comme bout de code.
+% param 1 : texte à formatter
+% exemple :
+\code{Texte au format code.}
+
 % sourcecodeinline - affiche le code source d'un fichier dans le dossier code/
 % param 1 : options de listings, ex. caption="titre"
 % param 2 : chemin du fichier source

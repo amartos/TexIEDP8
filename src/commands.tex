@@ -1,3 +1,9 @@
+%! @brief code - format text as code.
+%! @param 1 : text to format
+%! @example :
+%   \code{This text is formatted as code.} This text is not.
+\newcommand{\code}[1]{\lstinline[style=InlineCode]!#1!}
+
 %! @brief sourcecodeinline - add source code file from the code/ folder as paragraph
 %! @param 1 : additional listings options, eg. caption="title"
 %! @param 2 : file path
